@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        //$this->call(UserTableSeeder::class);
+        DB::table('users')->insert([
+            'name' => 'Mario',
+            'email' => 'laserna.mario@gmail.com',
+            'password' => bcrypt('123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
 
         Model::reguard();
     }
